@@ -39,7 +39,7 @@ addSmurf = (event) =>{
     return (
       <div>
         <h1>Smurfs</h1>
-        {this.props.smurfs.map(smurf => <p>{smurf.name}</p>)}
+        {this.props.smurfs.map(smurf => <p>name: {smurf.name} age: {smurf.age} height: {smurf.height}</p>)}
         <div>
             <h1>Add new Smurf</h1>
             <form onSubmit={this.addSmurf}>
