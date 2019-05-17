@@ -41,7 +41,7 @@ addSmurf = (event) =>{
         <h1>Smurfs</h1>
         {this.props.smurfs.map(smurf => <p>{smurf.name}</p>)}
         <div>
-            <h1>Add new Friend</h1>
+            <h1>Add new Smurf</h1>
             <form onSubmit={this.addSmurf}>
               <h2>name</h2>
               <input onChange={this.textChangeHandler} name="name" type="text" value={this.state.name} />
