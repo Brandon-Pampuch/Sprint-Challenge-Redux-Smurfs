@@ -1,22 +1,69 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { connect } from 'react-redux'
+import { getData, addSmurf } from '../actions'
+
 class App extends Component {
+  state ={
+    name: "",
+    age: "",
+    height:""
+
+  }
+  componentDidMount(){
+  this.props.getData()
+}
+
+textChangeHandler = (event) =>{
+  const newText = event.target.value
+  this.setState({
+    ...this.state,
+    [event.target.name]:newText
+    
+  })
+} 
+
+addSmurf = (event) =>{
+  event.preventDefault()
+  this.props.addSmurf(this.state)
+  this.setState({
+    name: "",
+    age: "",
+    height:""
+  })
+}
+
+
+  
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <div>
+        <h1>Smurfs</h1>
+        {this.props.smurfs.map(smurf => <p>{smurf.name}</p>)}
+        <div>
+            <h1>Add new Friend</h1>
+            <form onSubmit={this.addSmurf}>
+              <h2>name</h2>
+              <input onChange={this.textChangeHandler} name="name" type="text" value={this.state.name} />
+              <h2>age</h2>
+              <input onChange={this.textChangeHandler} name="age" type="text" value={this.state.age} />
+              <h2>height</h2>
+              <input onChange={this.textChangeHandler} name="height" type="text" value={this.state.email} />
+              <button>add User</button>
+              {/* loader in button with isloggin in booliearn terinary */}
+            </form>
+          </div>
+     </div>
+
+
     );
   }
 }
 
-export default App;
+const mapStateToProps = state =>({
+
+  smurfs: state.smurfs
+
+})
+
+export default connect(mapStateToProps,{getData,addSmurf})(App);
