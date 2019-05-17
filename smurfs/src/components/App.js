@@ -3,6 +3,10 @@ import "./App.css";
 import { connect } from "react-redux";
 import { getData, addSmurf, deleteSmurf } from "../actions";
 
+
+
+
+
 class App extends Component {
   state = {
     name: "",
@@ -26,7 +30,7 @@ class App extends Component {
     event.preventDefault();
     this.props.addSmurf(this.state);
     this.setState({
-      ...this.state,
+
       name: "",
       age: "",
       height: "",
@@ -39,7 +43,7 @@ class App extends Component {
     console.log("in delete",this.state)
     this.props.deleteSmurf(id)
     this.setState({
-      ...this.state,
+
       name: "",
       age: "",
       height: ""
@@ -49,12 +53,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <h1>Smurfs</h1>
         {this.props.smurfs.map(smurf => (
           <div>
             <p>
-            <button onClick={(event)=>this.deleteSmurf(smurf.id,event)}>
+            <button className="delete_button" onClick={(event)=>this.deleteSmurf(smurf.id,event)}>
               X
             </button>
               name: {smurf.name} age: {smurf.age} height: {smurf.height}
@@ -63,31 +67,32 @@ class App extends Component {
           </div>
         ))}
         <div>
-          <h1>Add new Smurf</h1>
-          <form onSubmit={this.addSmurf}>
+          <h2>Add new Smurf</h2>
+          <form>
             <h2>name</h2>
-            <input
+            <input className="smurf_input"
               onChange={this.textChangeHandler}
               name="name"
               type="text"
               value={this.state.name}
             />
             <h2>age</h2>
-            <input
+            <input  className="smurf_input"
               onChange={this.textChangeHandler}
               name="age"
               type="text"
               value={this.state.age}
             />
             <h2>height</h2>
-            <input
+            <input  className="smurf_input" 
               onChange={this.textChangeHandler}
               name="height"
               type="text"
               value={this.state.email}
             />
-            <button>add User</button>
+            
           </form>
+          <button className="smurf_button" onClick={this.addSmurf}>add Smurf</button>
         </div>
       </div>
     );

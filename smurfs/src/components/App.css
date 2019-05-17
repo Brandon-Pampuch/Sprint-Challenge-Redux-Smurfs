@@ -1,28 +1,38 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgb(50, 78, 78);
+
+  margin: 0 auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.wrapper{
+  display:flex;
+  color:skyblue;
+  flex-direction: column;
+  align-content: center;
+  width: 300px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.smurf_button{
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.delete_button{
+  text-decoration: none;
+  border-radius: 25px;
+  margin-right:10px;
 }
 
-.App-intro {
-  font-size: large;
+.smurf_input{
+border: none;
+border-bottom: 1px solid black;
+
+
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+textarea:focus, input:focus{
+  outline: none;
 }
