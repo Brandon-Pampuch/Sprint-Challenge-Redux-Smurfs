@@ -26,6 +26,7 @@ class App extends Component {
     event.preventDefault();
     this.props.addSmurf(this.state);
     this.setState({
+      ...this.state,
       name: "",
       age: "",
       height: "",
@@ -34,10 +35,11 @@ class App extends Component {
   };
 
   deleteSmurf = (id,event) =>{
-    event.preventDefault()
+  
     console.log("in delete",this.state)
     this.props.deleteSmurf(id)
     this.setState({
+      ...this.state,
       name: "",
       age: "",
       height: ""
