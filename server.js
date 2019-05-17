@@ -45,7 +45,7 @@ server.post('/smurfs', (req, res) => {
   }
 
   smurfs.push(newSmurf);
-  smurfId++;
+  smurfId = Date.now();
   res.json(smurfs);
 });
 
